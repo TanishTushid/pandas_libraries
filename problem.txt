@@ -1,0 +1,13 @@
+columns , row how much
+
+what type of data 
+
+missing data
+
+info() is the method
+
+number of rows 
+columns name 
+datatype 
+non null counts
+memory usage of dataframe 
