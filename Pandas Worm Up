@@ -1,1 +1,55 @@
 
+import pandas as pd
+
+dict1 = {
+    'Name':['Tanish','Gyaneshwar','Rishiraj','Himanshi','Ramu','kaju','Rajesh'],
+    'Marks' :[98,89,80,50,38,44,56],
+    'Gender' : ['Male','Male','Male','Female','Male','Female','Male']
+}
+df1 = pd.DataFrame(dict1)
+print(df1)
+print(df1.shape)
+print(df1.head())
+print(df1.tail())
+print(df1.isnull().sum())
+print(df1.isnull().sum(axis=0))
+print(df1.isnull().sum(axis=1))
+print(df1.describe())
+print(df1.describe(include='all'))
+print(df1['Gender'].unique())
+print(df1['Gender'].nunique())
+print(df1['Gender'].value_counts())
+print(df1['Marks']>=90)
+print(df1[df1['Marks']>=90])
+f = (df1['Marks'] >= 90) & (df1['Marks'] <= 100)
+print(f)
+ff = (len(df1['Marks'] >= 90) & (df1['Marks'] <= 100))
+print(ff)
+print(df1['Marks'].between(70,100))
+print(df1['Marks'].mean())
+print(df1['Marks'].max())
+print(df1['Marks'].min())
+
+def Marks(x):
+    return x/2
+
+#print(df1['Marks'].apply(Marks))
+df1['Half_Marks']=df1['Marks'].apply(Marks)
+print(df1)
+print(df1['Marks'].apply(lambda x:x//2))
+print(df1['Name'].apply(len))
+print(df1['Gender'].map({'male':1,'female':0}))
+df1['Gender_Mapped'] = df1['Gender'].map({'Male': 1, 'Female': 2})
+print(df1['Gender_Mapped'])
+d=df1.drop('Gender_Mapped',axis=1)
+print(d)
+ds=df1.drop(['Gender_Mapped','Half_Marks'],axis=1)
+print(ds)
+ds=df1.drop(['Gender_Mapped','Half_Marks'],axis=1,inplace=True)
+print(df1)
+print(df1.columns)
+print(df1.index)
+print(df1.sort_values(by='Marks'))
+print(df1.sort_values(by=['Marks','Gender'],ascending=False))
+print(df1[df1['Gender'] == 'Female'] [['Name','Marks']])
+print(df1[df1['Gender'].isin(['Female'])] [['Name','Marks']])
